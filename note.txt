@@ -1,0 +1,4 @@
+(OK) 1. R read (membaca data/menampilkan data dari database)
+(OK) 2. C create (membuat data/menginput data ke database)
+(OK) 3. D delete (mengahpus data dari database)
+(OK) 4. U update (mengubah data yang ada di database)
