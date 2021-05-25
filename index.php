@@ -1,6 +1,20 @@
 <?php
 // Create database connection using config file
 include_once("config.php");
+
+$found = '';
+
+$name = $_GET['pencarian_nama'] ?? null;
+
+if ($name) {
+    $query_mahasiswa = mysqli_query($mysqli, "SELECT * FROM mahasiswa WHERE nama = '$name'");
+    $mahasiswa = mysqli_fetch_array($query_mahasiswa, MYSQLI_ASSOC);
+
+    if ($mahasiswa['nama']) {
+        $found = 'Data ditemukan';
+    }
+}
+
  
 // Fetch all users data from database
 $result = mysqli_query(
@@ -41,5 +55,14 @@ $result = mysqli_query(
             }
         ?>
     </table>
+
+    <form action="search.php" style="margin-top:20px">
+        <label for="">Cari:</label>
+        <br>
+        <input type="text" name="pencarian_nama">
+        <button>Cari</button>
+    </form>
+
+    <h2 style="color: green"><?= $found ?></h2>
 </body>
 </html>
